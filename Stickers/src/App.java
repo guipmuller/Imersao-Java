@@ -1,4 +1,6 @@
+import java.io.InputStream;
 import java.net.URI;
+import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -46,8 +48,17 @@ public class App {
         System.out.println("#####################################");
 
         for (Map<String,String> filme : listTopMovies) {
+            
+            String urlImage = filme.get("image");
+            String titulo = filme.get("title");
+
+            InputStream inputStream = new URL(urlImage).openStream();
+            String nomeArquivo = titulo + ".png";
+            
+            StickerGenerator gerador = new StickerGenerator();
+            gerador.create(inputStream, nomeArquivo);
+
             System.out.println("\u001b[1m" + filme.get("title") + "\u001b[m");
-            System.out.println(filme.get("image"));
             System.out.println(filme.get("imDbRating"));
             double rank = Double.parseDouble(filme.get("imDbRating"));
             int starNumber = (int) rank;

@@ -1,4 +1,3 @@
-import java.awt.AlphaComposite;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
@@ -16,24 +15,21 @@ import java.io.InputStream;
 import javax.imageio.ImageIO;
 
 public class StickerGenerator {
-    void create(InputStream inputStream, String nomeArquivo, String texto, InputStream inputStreamVerificacao) throws Exception {
+    void create(InputStream inputStream, String nomeArquivo, String texto) throws Exception {
         // leitura da imagem
         //InputStream inputStream  = new FileInputStream(new File("C:\\Users\\guilh\\Desktop\\java files\\Imersão-Java\\Imersao-Java\\Stickers\\entrada\\filme.jpg"));
         //InputStream inputStream = new URL("https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies_1.jpg").openStream();
         BufferedImage imagemOriginal = ImageIO.read(inputStream);
+        
         // cria nova imagem com transparência e tamanho
         int largura = imagemOriginal.getWidth();
         int altura = imagemOriginal.getHeight();
         int novaAltura = altura + 200;
         BufferedImage novaImagem = new BufferedImage(largura, novaAltura, BufferedImage.TRANSLUCENT);
+        
         // copiar a imagem para a nova imagem
         Graphics2D graphics = (Graphics2D) novaImagem.getGraphics();
         graphics.drawImage(imagemOriginal, 0, 0, null);
-
-        BufferedImage imagemVerificacao = ImageIO.read(inputStreamVerificacao);
-        int posicaoImagemVerificacaoY = novaAltura - (novaAltura/2);
-        graphics.drawImage(imagemVerificacao, 0, posicaoImagemVerificacaoY, null);
-
 
         // configurar a fonte de texto
         Font fonte = new Font("Impact", Font.BOLD, 128);

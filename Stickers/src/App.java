@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
@@ -51,16 +53,30 @@ public class App {
             
             String urlImage = filme.get("image");
             String titulo = filme.get("title");
-
+            double rank = Double.parseDouble(filme.get("imDbRating"));
+                        
             InputStream inputStream = new URL(urlImage).openStream();
-            String nomeArquivo = titulo + ".png";
-            
+            String nomeArquivo = titulo.replace(":", "-")  + ".png";
+            String textoFigurinha;
+
+            if (rank >= 9.0) {
+                textoFigurinha = "Incrível";
+            } else if (rank < 9.0 & rank > 8.0) {
+                textoFigurinha = "Ótimo";
+            } else {
+                textoFigurinha = "Ok";   
+            }           
+            InputStream verificacao;
+            if (rank >= 8.0) {
+                verificacao = new FileInputStream(new File("Stickers\\entrada\\aprovado.png"));
+            } else {
+                verificacao = new FileInputStream(new File("Stickers\\entrada\\reprovado.png"));
+            }
             StickerGenerator gerador = new StickerGenerator();
-            gerador.create(inputStream, nomeArquivo);
+            gerador.create(inputStream, nomeArquivo, textoFigurinha, verificacao);
 
             System.out.println("\u001b[1m" + filme.get("title") + "\u001b[m");
             System.out.println(filme.get("imDbRating"));
-            double rank = Double.parseDouble(filme.get("imDbRating"));
             int starNumber = (int) rank;
             for (int index = 0; index <= starNumber; index++) {
                 System.out.print("⭐");
@@ -73,10 +89,35 @@ public class App {
         System.out.println("#####################################");
 
         for (Map<String,String> filme : listPopularMovies) {
-            System.out.println("\u001b[1m" + filme.get("title") + "\u001b[m");
-            System.out.println(filme.get("image"));
-            System.out.println(filme.get("imDbRating"));
+            
+            String urlImage = filme.get("image");
+            String titulo = filme.get("title");
             double rank = Double.parseDouble(filme.get("imDbRating"));
+                        
+            InputStream inputStream = new URL(urlImage).openStream();
+            String nomeArquivo = titulo.replace(":", "-")  + ".png";
+            String textoFigurinha;
+
+            if (rank >= 9.0) {
+                textoFigurinha = "Incrível";
+            } else if (rank < 9.0 & rank > 8.0) {
+                textoFigurinha = "Ótimo";
+            } else {
+                textoFigurinha = "Ok";   
+            }           
+            InputStream verificacao;
+            if (rank >= 8.0) {
+                verificacao = new FileInputStream(new File("Stickers\\entrada\\aprovado.png"));
+            } else {
+                verificacao = new FileInputStream(new File("Stickers\\entrada\\reprovado.png"));
+            }
+            StickerGenerator gerador = new StickerGenerator();
+            gerador.create(inputStream, nomeArquivo, textoFigurinha, verificacao);
+
+
+            System.out.println("\u001b[1m" + filme.get("title") + "\u001b[m");
+//            System.out.println(filme.get("image"));
+            System.out.println(filme.get("imDbRating"));
             int starNumber = (int) rank;
             for (int index = 0; index <= starNumber; index++) {
                 System.out.print("⭐");
@@ -89,10 +130,34 @@ public class App {
         System.out.println("#####################################");
 
         for (Map<String,String> filme : listPopularTV) {
-            System.out.println("\u001b[1m" + filme.get("title") + "\u001b[m");
-            System.out.println(filme.get("image"));
-            System.out.println(filme.get("imDbRating"));
+            
+            String urlImage = filme.get("image");
+            String titulo = filme.get("title");
             double rank = Double.parseDouble(filme.get("imDbRating"));
+                        
+            InputStream inputStream = new URL(urlImage).openStream();
+            String nomeArquivo = titulo.replace(":", "-")  + ".png";
+            String textoFigurinha;
+
+            if (rank >= 9.0) {
+                textoFigurinha = "Incrível";
+            } else if (rank < 9.0 & rank > 8.0) {
+                textoFigurinha = "Ótimo";
+            } else {
+                textoFigurinha = "Ok";   
+            }           
+            InputStream verificacao;
+            if (rank >= 8.0) {
+                verificacao = new FileInputStream(new File("Stickers\\entrada\\aprovado.png"));
+            } else {
+                verificacao = new FileInputStream(new File("Stickers\\entrada\\reprovado.png"));
+            }
+            StickerGenerator gerador = new StickerGenerator();
+            gerador.create(inputStream, nomeArquivo, textoFigurinha, verificacao);
+
+            System.out.println("\u001b[1m" + filme.get("title") + "\u001b[m");
+//            System.out.println(filme.get("image"));
+            System.out.println(filme.get("imDbRating"));
             int starNumber = (int) rank;
             for (int index = 0; index <= starNumber; index++) {
                 System.out.print("⭐");

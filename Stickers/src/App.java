@@ -9,7 +9,8 @@ public class App {
         // String urlConteudo = "https://api.nasa.gov/planetary/apod?api_key=3mZoDwnbRMyGoO95prxsrWovVrwv9L2mj9XCCr9G&start_date=2022-05-17&end_date=2022-05-21";
         // ExtratorDeConteudo extrator = new NasaExtrator();
 
-        String urlConteudo = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
+        // String urlConteudo = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
+        String urlConteudo = "http://localhost:8080/Linguagens";
         ExtratorDeConteudo extrator = new IMDBExtrator();
 
         ClienteHTTP http = new ClienteHTTP();
@@ -22,7 +23,7 @@ public class App {
         for (int i = 0; i < 3; i++) {
             conteudo conteudo = conteudos.get(i);
             InputStream inputStream = new URL(conteudo.getUrlImagem()).openStream();
-            String nomeArquivo = "Stickers\\saida\\" + conteudo.getTitulo().replace(":", "-")  + ".png";
+            String nomeArquivo = "Imersão-Java\\Imersao-Java\\Stickers\\saida\\" + conteudo.getTitulo().replace(":", "-")  + ".png";
             String textoString = conteudo.getTitulo();
             StickerGenerator gerador = new StickerGenerator();
             gerador.create(inputStream, nomeArquivo, textoString);

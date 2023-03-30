@@ -20,7 +20,7 @@ public class App {
         System.out.println("\u001b[30m \u001b[47mStickers\u001b[m");
         List<conteudo> conteudos = extrator.extraiConteudos(json);
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
             conteudo conteudo = conteudos.get(i);
             InputStream inputStream = new URL(conteudo.getUrlImagem()).openStream();
             String nomeArquivo = "Imersão-Java\\Imersao-Java\\Stickers\\saida\\" + conteudo.getTitulo().replace(":", "-")  + ".png";

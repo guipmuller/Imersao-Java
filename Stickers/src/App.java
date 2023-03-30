@@ -6,11 +6,11 @@ public class App {
     public static void main(String[] args) throws Exception {
         // fazer uma conexão HTTP e importar a API
         
-        String urlConteudo = "https://api.nasa.gov/planetary/apod?api_key=3mZoDwnbRMyGoO95prxsrWovVrwv9L2mj9XCCr9G&start_date=2022-05-17&end_date=2022-05-21";
-        ExtratorDeConteudo extrator = new NasaExtrator();
+        // String urlConteudo = "https://api.nasa.gov/planetary/apod?api_key=3mZoDwnbRMyGoO95prxsrWovVrwv9L2mj9XCCr9G&start_date=2022-05-17&end_date=2022-05-21";
+        // ExtratorDeConteudo extrator = new NasaExtrator();
 
-        // String urlConteudo = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
-        // ExtratorDeConteudo extrator = new IMDBExtrator();
+        String urlConteudo = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
+        ExtratorDeConteudo extrator = new IMDBExtrator();
 
         ClienteHTTP http = new ClienteHTTP();
         String json = http.buscaDados(urlConteudo);

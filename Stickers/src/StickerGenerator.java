@@ -32,7 +32,7 @@ public class StickerGenerator {
         graphics.drawImage(imagemOriginal, 0, 0, null);
 
         // configurar a fonte de texto
-        Font fonte = new Font("Impact", Font.BOLD, 128);
+        Font fonte = new Font("Impact", Font.BOLD, (largura/15));
         graphics.setColor(Color.WHITE);
         graphics.setFont(fonte);
 
